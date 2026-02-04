@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>האתר שלי</title>
+    <meta name="description" content="דף נחיתה נקי, מהיר ומודרני." />
+    <style>
+      :root{
+        --bg: #0b1020;
+        --card: rgba(255,255,255,.06);
+        --stroke: rgba(255,255,255,.12);
+        --text: rgba(255,255,255,.92);
+        --muted: rgba(255,255,255,.68);
+        --accent: #6ee7ff;
+        --accent2: #a78bfa;
+        --shadow: 0 20px 60px rgba(0,0,0,.35);
+        --radius: 18px;
+        --max: 1120px;
+      }
+      *{box-sizing:border-box}
+      body{
+        margin:0;
+        font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+        color:var(--text);
+        background:
+          radial-gradient(1200px 600px at 85% -10%, rgba(110,231,255,.18), transparent 60%),
+          radial-gradient(900px 500px at 10% 10%, rgba(167,139,250,.18), transparent 60%),
+          linear-gradient(180deg, #070a14, #0b1020 45%, #070a14);
+        min-height:100vh;
+      }
+      a{color:inherit}
+      .container{max-width:var(--max); margin:0 auto; padding:20px}
+      header{
+        position:sticky; top:0; z-index:10;
+        backdrop-filter: blur(14px);
+        background: rgba(11,16,32,.55);
+        border-bottom: 1px solid rgba(255,255,255,.06);
+      }
+      .nav{
+        display:flex; align-items:center; justify-content:space-between;
+        gap:14px; padding:14px 20px;
+      }
+      .brand{
+        display:flex; align-items:center; gap:10px; text-decoration:none;
+        font-weight:700; letter-spacing:.2px;
+      }
+      .logo{
+        width:34px; height:34px; border-radius:12px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        box-shadow: 0 10px 25px rgba(110,231,255,.18);
+      }
+      .links{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+      .links a{
+        text-decoration:none; color:var(--muted);
+        padding:8px 10px; border-radius:12px;
+      }
+      .links a:hover{color:var(--text); background: rgba(255,255,255,.06)}
+      .btn{
+        border:1px solid var(--stroke);
+        background: rgba(255,255,255,.06);
+        color:var(--text);
+        padding:10px 14px;
+        border-radius:14px;
+        text-decoration:none;
+        display:inline-flex; align-items:center; gap:8px;
+        box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      }
+      .btn.primary{
+        border: none;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: #071018;
+        font-weight:700;
+      }
+      .btn:hover{transform: translateY(-1px)}
+      .hero{
+        padding:64px 0 36px;
+      }
+      .grid{
+        display:grid;
+        grid-template-columns: 1.25fr .75fr;
+        gap:22px;
+        align-items:stretch;
+      }
+      .card{
+        background: var(--card);
+        border: 1px solid rgba(255,255,255,.10);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+      .heroCard{padding:28px}
+      h1{
+        margin:0 0 10px;
+        font-size: clamp(28px, 3.4vw, 46px);
+        line-height: 1.1;
+      }
+      .sub{
+        margin:0 0 18px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height:1.7;
+        max-width: 60ch;
+      }
+      .ctaRow{display:flex; gap:12px; flex-wrap:wrap; align-items:center}
+      .kpis{
+        display:grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap:10px;
+        margin-top:18px;
+      }
+      .kpi{
+        padding:14px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.04);
+      }
+      .kpi b{display:block; font-size:20px}
+      .kpi span{color: var(--muted); font-size: 13px}
+      .side{padding:18px}
+      .badge{
+        display:inline-flex; align-items:center; gap:8px;
+        font-size: 13px; color: var(--muted);
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.04);
+        padding:8px 10px;
+        border-radius: 999px;
+      }
+      .list{margin:14px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+      .li{
+        display:flex; gap:10px; align-items:flex-start;
+        padding:12px 12px;
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,.10);
+        background: rgba(255,255,255,.04);
+      }
+      .dot{
+        width:10px; height:10px; border-radius:999px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        margin-top:5px; flex: 0 0 auto;
+      }
+      section{padding:26px 0}
+      .sectionTitle{
+        margin:0 0 10px;
+        font-size: 22px;
+      }
+      .muted{color:var(--muted); line-height:1.8; margin:0}
+      .cards3{
+        display:grid; grid-template-columns: repeat(3, 1fr);
+        gap:14px; margin-top:14px;
+      }
+      .mini{
+        padding:18px;
+      }
+      .mini h3{margin:0 0 8px; font-size:16px}
+      .mini p{margin:0; color:var(--muted); line-height:1.7; font-size:14px}
+      .contact{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+        gap:14px;
+        margin-top:14px;
+      }
+      label{display:block; font-size:13px; color:var(--muted); margin:0 0 6px}
+      input, textarea{
+        width:100%;
+        padding:12px 12px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,.12);
+        background: rgba(7,10,20,.55);
+        color: var(--text);
+        outline: none;
+      }
+      textarea{min-height:120px; resize: vertical}
+      .formCard{padding:18px}
+      footer{
+        padding:28px 0 40px;
+        color: rgba(255,255,255,.55);
+        font-size: 13px;
+        text-align:center;
+      }
+      .toast{
+        position: fixed;
+        bottom: 18px;
+        left: 18px;
+        background: rgba(0,0,0,.55);
+        border: 1px solid rgba(255,255,255,.12);
+        backdrop-filter: blur(10px);
+        padding: 12px 14px;
+        border-radius: 14px;
+        display:none;
+        max-width: min(440px, 92vw);
+      }
+
+      @media (max-width: 900px){
+        .grid{grid-template-columns:1fr}
+        .cards3{grid-template-columns:1fr}
+        .contact{grid-template-columns:1fr}
+        .kpis{grid-template-columns:1fr}
+        .links{display:none}
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav container">
+        <a class="brand" href="#top" aria-label="דף הבית">
+          <div class="logo" aria-hidden="true"></div>
+          <span>האתר שלי</span>
+        </a>
+        <nav class="links" aria-label="ניווט">
+          <a href="#features">מה מקבלים</a>
+          <a href="#about">אודות</a>
+          <a href="#contact">צור קשר</a>
+        </nav>
+        <a class="btn primary" href="#contact">בואי נדבר</a>
+      </div>
+    </header>
+
+    <main id="top" class="container">
+      <section class="hero">
+        <div class="grid">
+          <div class="card heroCard">
+            <h1>אתר נקי, מודרני ורספונסיבי — מוכן לשימוש</h1>
+            <p class="sub">
+              תבנית דף נחיתה עם אזור יתרונות, קריאה לפעולה, וטופס “צור קשר” שעובד (מציג הודעה ושומר מקומית בדפדפן).
+              אפשר להחליף טקסט/צבעים ולחבר לשליחת מייל או API.
+            </p>
+            <div class="ctaRow">
+              <a class="btn primary" href="#features">לראות יתרונות</a>
+              <a class="btn" href="#contact">השאירי פרטים</a>
+            </div>
+
+            <div class="kpis" aria-label="מדדים">
+              <div class="kpi"><b>⚡ מהיר</b><span>קובץ אחד, בלי תלות</span></div>
+              <div class="kpi"><b>📱 רספונסיבי</b><span>נראה טוב גם במובייל</span></div>
+              <div class="kpi"><b>✨ נקי</b><span>עיצוב מודרני ומינימלי</span></div>
+            </div>
+          </div>
+
+          <aside class="card side" aria-label="מה כולל">
+            <span class="badge">📌 כולל קטעים מוכנים</span>
+            <ul class="list">
+              <li class="li"><span class="dot"></span><div><b>כותרת חזקה</b><div class="muted">מסר קצר + CTA</div></div></li>
+              <li class="li"><span class="dot"></span><div><b>יתרונות</b><div class="muted">3 כרטיסים עם טקסט</div></div></li>
+              <li class="li"><span class="dot"></span><div><b>צור קשר</b><div class="muted">טופס עם ולידציה בסיסית</div></div></li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section id="features">
+        <h2 class="sectionTitle">מה מקבלים</h2>
+        <p class="muted">שלושה יתרונות מרכזיים שאפשר להתאים לכל מוצר/שירות.</p>
+
+        <div class="cards3">
+          <div class="card mini">
+            <h3>עיצוב “פרימיום”</h3>
+            <p>גרדיאנטים עדינים, כרטיסים עם עומק, וטיפוגרפיה נעימה — בלי ספריות.</p>
+          </div>
+          <div class="card mini">
+            <h3>מבנה נכון</h3>
+            <p>Hero → Features → About → Contact. קל להרחיב לעמודים נוספים.</p>
+          </div>
+          <div class="card mini">
+            <h3>מוכן לחיבור</h3>
+            <p>אפשר לחבר את הטופס ל־Formspree / Zapier / API שלך בקלות.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2 class="sectionTitle">אודות</h2>
+        <div class="card formCard">
+          <p class="muted">
+            כאן את כותבת כמה משפטים עלייך/על העסק/על המוצר. טיפ: שמרי על ניסוח קצר ומדויק,
+            והדגישי ערך ברור + למי זה מיועד.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 class="sectionTitle">צור קשר</h2>
+        <p class="muted">השאירי פרטים — ובדמו הזה תקבלי הודעת הצלחה. (לא נשלח לשום מקום באמת)</p>
+
+        <div class="contact">
+          <div class="card formCard">
+            <form id="contactForm">
+              <div style="margin-bottom:12px">
+                <label for="name">שם</label>
+                <input id="name" name="name" placeholder="מיטל" required />
+              </div>
+              <div style="margin-bottom:12px">
+                <label for="email">אימייל</label>
+                <input id="email" name="email" type="email" placeholder="name@example.com" required />
+              </div>
+              <div style="margin-bottom:12px">
+                <label for="message">הודעה</label>
+                <textarea id="message" name="message" placeholder="מה תרצי לבנות/לשפר?" required></textarea>
+              </div>
+              <button class="btn primary" type="submit">שליחה</button>
+              <button class="btn" type="button" id="fillDemo">מילוי לדוגמה</button>
+            </form>
+          </div>
+
+          <div class="card formCard">
+            <h3 style="margin:0 0 8px">פרטים</h3>
+            <p class="muted" style="margin-bottom:14px">
+              שימי כאן כתובת, טלפון, שעות פעילות, לינקים לרשתות וכו׳.
+            </p>
+            <div class="muted">
+              <div>📍 תל אביב / ירושלים / Remote</div>
+              <div>☎️ 050-0000000</div>
+              <div>✉️ hello@example.com</div>
+            </div>
+            <hr style="border:none;border-top:1px solid rgba(255,255,255,.08);margin:14px 0">
+            <p class="muted">
+              רוצה גרסה רב-עמודית (Home/Services/Pricing/Blog) או חיבור ל־CMS? אפשר להרחיב את זה ממש מהר.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="year"></span> האתר שלי • נבנה ב־HTML/CSS/JS
+      </footer>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script>
+      const $ = (s) => document.querySelector(s);
+
+      $("#year").textContent = new Date().getFullYear();
+
+      function toast(msg){
+        const el = $("#toast");
+        el.textContent = msg;
+        el.style.display = "block";
+        clearTimeout(window.__t);
+        window.__t = setTimeout(() => el.style.display = "none", 3200);
+      }
+
+      $("#fillDemo").addEventListener("click", () => {
+        $("#name").value = "מיטל";
+        $("#email").value = "meital@example.com";
+        $("#message").value = "היי! אני רוצה אתר דף נחיתה עם כפתור וואטסאפ וחיבור לשליחת לידים.";
+        toast("מילאתי לך דוגמה 🙂");
+      });
+
+      $("#contactForm").addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = {
+          name: $("#name").value.trim(),
+          email: $("#email").value.trim(),
+          message: $("#message").value.trim(),
+          at: new Date().toISOString()
+        };
+
+        if(!data.name || !data.email || !data.message){
+          toast("חסרים פרטים בטופס.");
+          return;
+        }
+
+        // Demo: save locally (so it "works" without backend)
+        const key = "leads_demo";
+        const leads = JSON.parse(localStorage.getItem(key) || "[]");
+        leads.unshift(data);
+        localStorage.setItem(key, JSON.stringify(leads));
+
+        $("#contactForm").reset();
+        toast("נשלח בהצלחה (בדמו נשמר מקומית בדפדפן).");
+        console.log("Lead saved locally:", data);
+      });
+    </script>
+  </body>
+</html>
